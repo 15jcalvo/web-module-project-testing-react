@@ -20,11 +20,12 @@ test("renders without error", () => {
 
 test("renders the summary test passed as prop", ()=>{
     render(<Episode episode={dummyEpisode}/>);
-    const summary = screen.queryByText(/world/i);
+    const summary = screen.getByText(/world/i);
     expect(summary).toBeTruthy();
     expect(summary).toBeInTheDocument();
     expect(summary).not.toBeFalsy();
-
+    const nullImgAlt = screen.getByAltText(/stranger-things.png/i)
+    expect(nullImgAlt).toBeInTheDocument();
 });
 
 test("renders default image when image is not defined", ()=>{});
