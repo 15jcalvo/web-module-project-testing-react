@@ -31,6 +31,13 @@ test('renders same number of options seasons are passed in', ()=>{
 
 });
 
-test('handleSelect is called when an season is selected', () => {});
+test('handleSelect is called when an season is selected', () => {
+    render(<Show show={dummyShow} selectedSeason ='none'/>)
+    userEvent.click(screen.getByTestId('season-select'))
+    const seasons = screen.queryAllByTestId('season-option')
+    userEvent.click(seasons[0])
+    const episodeRender = screen.queryAllByTestId('episode-render')
+    expect(episodeRender).toBeTruthy()
+});
 
 test('component renders when no seasons are selected and when rerenders with a season passed in', () => {});

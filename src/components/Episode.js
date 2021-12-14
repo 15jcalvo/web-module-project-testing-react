@@ -9,7 +9,7 @@ const Episode = (props)=> {
 
     return(<div className="episode" key={id}>
         <img className="episode-image" src={imgsrc} alt={imgsrc} />
-        <div className="episode-info">
+        <div className="episode-info" data-testid='episode-render'>
             <p className="episode-number">Season {season}, Episode {number}</p>
             <h3>{name}</h3>
             <p>{summary}</p>
