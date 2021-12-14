@@ -40,4 +40,13 @@ test('handleSelect is called when an season is selected', () => {
     expect(episodeRender).toBeTruthy()
 });
 
-test('component renders when no seasons are selected and when rerenders with a season passed in', () => {});
+test('component renders when no seasons are selected and when rerenders with a season passed in', () => {
+    render(<Show show={dummyShow} selectedSeason ='none'/>)
+    const episodeNull = screen.queryAllByTestId('episode-render')
+    expect(episodeNull).toHaveLength(0);
+    userEvent.click(screen.getByTestId('season-select'))
+    const seasons = screen.queryAllByTestId('season-option')
+    userEvent.click(seasons[0])
+    const episodeRender = screen.queryAllByTestId('episode-render')
+    expect(episodeRender).toBeTruthy()
+});
